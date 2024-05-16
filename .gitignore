@@ -1,0 +1,13 @@
+**/debug
+**/release
+
+**/*.7z
+**/*.obj
+**/*.pro.user
+**/*.pro.user.*
+
+**/*.svn-base
+**/.svn
+
+!.gitignore
+!.htaccess

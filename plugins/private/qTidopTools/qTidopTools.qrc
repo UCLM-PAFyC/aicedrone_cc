@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/CC/plugin/qTidopTools">
+        <file>info.json</file>
+        <file>images/pafycLite.png</file>
+        <file>images/processing.png</file>
+        <file>images/lidar.png</file>
+        <file>images/tidop.png</file>
+        <file>images/tidop-usal.png</file>
+        <file>images/manualClassification.png</file>
+        <file>images/randomForestClasiffication.png</file>
+		<file>images/ccCancel.png</file>
+		<file>images/ccDelete.png</file>
+		<file>images/ccPlus.png</file>
+		<file>images/ccSmallPause.png</file>
+		<file>images/ccSmallValidate.png</file>
+		<file>images/ccStart.png</file>
+		<file>images/ccSmallValidate.png</file>
+		<file>images/ccStart.png</file>
+		<file>images/smallPolygonSelect.png</file>
+		<file>images/smallRectangleSelect.png</file>
+    </qresource>
+</RCC>

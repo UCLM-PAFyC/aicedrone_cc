@@ -1,0 +1,27 @@
+{
+	"type" : "Standard",
+	"name" : "AICEDRONE Tools",
+        "icon" : ":/CC/plugin/qAicedroneTools/images/rover_icon.png",
+	"description" : "Tools for point cloud processing in AICEDRONE project",
+	"authors" : [
+		{
+		  "name": "David Hernandez Lopez",
+		  "email" : "david.hernandez@uclm.es"
+		}
+	],
+	"maintainers" : [
+		{
+			"name" : "David Hernandez Lopez (PAFYC-UCLM)"
+		}
+	],
+	"references": [
+		{
+			"text" : "PAFYC Research Group",
+			"url" : "https://pafyc.uclm.es/"
+		},
+		{
+			"text" : "Rover",
+			"url" : "https://www.rovergrupo.com/"
+		}
+	]
+}

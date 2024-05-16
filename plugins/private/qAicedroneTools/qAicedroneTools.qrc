@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/CC/plugin/qAicedroneTools">
+        <file>info.json</file>
+		<file>images/rover_icon.png</file>
+        <file>images/pafycLite.png</file>
+        <file>images/processing.png</file>
+        <file>images/lidar.png</file>
+        <file>images/tidop.png</file>
+        <file>images/tidop-usal.png</file>
+        <file>images/manualClassification.png</file>
+        <file>images/randomForestClasiffication.png</file>
+		<file>images/ccCancel.png</file>
+		<file>images/ccDelete.png</file>
+		<file>images/ccPlus.png</file>
+		<file>images/ccSmallPause.png</file>
+		<file>images/ccSmallValidate.png</file>
+		<file>images/ccStart.png</file>
+		<file>images/ccSmallValidate.png</file>
+		<file>images/ccStart.png</file>
+		<file>images/smallPolygonSelect.png</file>
+		<file>images/smallRectangleSelect.png</file>
+		<file>images/tiles.png</file>
+		<file>images/mActionSelectRectangle.png</file>
+		<file>images/mActionSelectPolygon.png</file>
+		<file>images/mActionSelectFreehand.png</file>
+		<file>images/mActionSelectRectangle3D.png</file>
+		<file>images/mActionSelectPolygon3D.png</file>
+		<file>images/mActionSelectFreehand3D.png</file>
+		<file>images/Proyecto_1_850.png</file>
+    </qresource>
+</RCC>

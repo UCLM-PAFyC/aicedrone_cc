@@ -1,0 +1,34 @@
+{
+	"type" : "Standard",
+	"name" : "TIDOP Tools",
+    "icon" : ":/CC/plugin/qTidopTools/images/tidop.png",
+	"description" : "Tools for point cloud classification.",
+	"authors" : [
+		{
+		  "name": "David Hernandez Lopez",
+		  "email" : "david.hernandez@uclm.es"
+		},
+		{
+		  "name": "Esteban Ruiz de Oña Crespo",
+		  "email" : "estebanrdo@usal.es"
+		}
+	],
+	"maintainers" : [
+		{
+			"name" : "Esteban Ruiz de Oña Crespo (TIDOP-USAL)"
+		},
+		{
+			"name" : "David Hernandez Lopez (TIDOP-USAL, PAFYC-UCLM)"
+		}
+	],
+	"references": [
+		{
+			"text" : "TIDOP Research Group",
+			"url" : "https://tidop.usal.es/"
+		},
+		{
+			"text" : "Documentation",
+			"url" : "https://pafyc.uclm.es/"
+		}
+	]
+}
