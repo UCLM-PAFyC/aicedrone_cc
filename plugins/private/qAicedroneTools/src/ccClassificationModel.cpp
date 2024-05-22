@@ -372,7 +372,8 @@ static void ReadClass(const QSettings& settings, const QString& className, ccCla
 
 void ccClassificationModel::createDefaultItems()
 {
-	QSettings settings;
+    QSettings settings;
+    settings.clear(); // remove previous values
     if(m_modelName.compare(CC_CLASSIFICATION_MODEL_ASPRS_NAME,
                          Qt::CaseInsensitive)==0)
     {
@@ -465,15 +466,15 @@ void ccClassificationModel::createDefaultItems()
             AddClass(settings, "Selected",				        CC_CLASSIFICATION_MODEL_SELECTED_CODE, qRgb(0, 255, 255));
             AddClass(settings, "Not classified",				 CC_CLASSIFICATION_MODEL_NO_ASPRS_NOT_CLASSIFIED_CODE, qRgb(255, 0, 255));
             AddClass(settings, "Unclassified",					 CC_CLASSIFICATION_MODEL_NO_ASPRS_UNCLASSIFIED_CODE, qRgb(170, 170, 170));
-//            AddClass(settings, "Floor",				             0, qRgb(200,130,55));
-            AddClass(settings, "Ground",					     1, qRgb(200,150,150));
-            AddClass(settings, "Railway",					     2, qRgb(200,115,50));
-            AddClass(settings, "Rail",				             3, qRgb(250,0,0));
-            AddClass(settings, "Wire",				             4, qRgb(0,0,255));
-            AddClass(settings, "Tower",				             5, qRgb(255,255,50));
-            AddClass(settings, "TowerCatenary",				     6, qRgb(0,0,255));
-            AddClass(settings, "Building",						 7, qRgb(255,150,0));
-            AddClass(settings, "Ballast",				         8, qRgb(150,150,150));
+            AddClass(settings, "Platform",				         0, qRgb(185,185,185));
+            AddClass(settings, "Rail",					         1, qRgb(100,100,100));
+            AddClass(settings, "Ground",						 2, qRgb(166, 116, 4));
+            AddClass(settings, "Wire",				             3, qRgb(0,0,255));
+            AddClass(settings, "Tower",				             4, qRgb(255,255,50));
+            AddClass(settings, "TowerCatenary",				     5, qRgb(0,0,255));
+            AddClass(settings, "Building",						 6, qRgb(255,0,0));
+            AddClass(settings, "Ballast",				         7, qRgb(150,150,150));
+            AddClass(settings, "Post",				             8, qRgb(250,150,0));
             AddClass(settings, "Tree",							 9, qRgb(0,255,0));
         }
         settings.endGroup();
