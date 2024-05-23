@@ -1,3 +1,20 @@
+//##########################################################################
+//#                                                                        #
+//#                     TIDOPTOOLS PLUGIN: qTidopTools                     #
+//#                                                                        #
+//#  This program is free software; you can redistribute it and/or modify  #
+//#  it under the terms of the GNU General Public License as published by  #
+//#  the Free Software Foundation; version 2 or later of the License.      #
+//#                                                                        #
+//#  This program is distributed in the hope that it will be useful,       #
+//#  but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+//#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the          #
+//#  GNU General Public License for more details.                          #
+//#                                                                        #
+//#      COPYRIGHT: TIDOP-USAL / PAFYC-UCLM                                #
+//#                                                                        #
+//##########################################################################
+
 #include "../include/ccToolsRandomForestClassificationDlg.h"
 #include "../include/ccToolsRandomForestClassificationDefinitions.h"
 #include "libParameters/ParametersManager.h"
@@ -314,6 +331,7 @@ void ccToolsRandomForestClassificationDlg::initTableView()
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::VISIBLE, QHeaderView::ResizeToContents);
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::CODE, QHeaderView::ResizeToContents);
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::COLOR, QHeaderView::ResizeToContents);
+    tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::RGB, QHeaderView::ResizeToContents);
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::COUNT, QHeaderView::ResizeToContents);
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::LOCKED, QHeaderView::ResizeToContents);
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::TRAIN, QHeaderView::ResizeToContents);
@@ -1711,6 +1729,18 @@ void ccToolsRandomForestClassificationDlg::on_process_finished()
         msgBox.setText(msgText);
         msgBox.exec();
     }
+    else if(m_classificationProcessCommand.compare(RFC_PROCESS_TRAINING_CLASS_SEPARABILITY_ANALYSIS,Qt::CaseInsensitive)==0)
+    {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Process: "+m_classificationProcessCommand);
+        QString msgText=QObject::tr("Processing time (seconds): %1\n").arg(m_strTime);
+//        if(!m_strReport.isEmpty())
+//        {
+//            msgText+=QObject::tr("Processing report:\n%1").arg(m_strReport);
+//        }
+        msgBox.setText(msgText);
+        msgBox.exec();
+    }
 }
 
 bool ccToolsRandomForestClassificationDlg::initialize(QString &strError)
@@ -1848,12 +1878,12 @@ bool ccToolsRandomForestClassificationDlg::trainingClassesSeparabiltyAnalysis(Pa
     m_strTime.clear();
     if(m_useCGAL)
     {
-//        return(m_ptrClassificationToolCGAL->trainingClassesSeparabiltyAnalysis(ptrParametersManager,
-//                                                                               trainFieldName,
-//                                                                               m_strTime,
-//                                                                               m_strReport,
-//                                                                               m_strError));
-        return(true);
+        return(m_ptrClassificationToolCGAL->trainingClassesSeparabiltyAnalysis(ptrParametersManager,
+                                                                               trainFieldName,
+                                                                               m_strTime,
+                                                                               m_strReport,
+                                                                               m_strError));
+					 
     }
     else
     {

@@ -149,8 +149,37 @@ void qTidopToolsPlugin::doManualClassificationAction()
 
     if (!cloud->hasScalarFields())
     {
-        ccLog::Error("Cloud has no scalar field");
-        return;
+//        ccLog::Error("Cloud has no scalar field");
+//        return;
+        QString defaultClassificationName=CC_CLASSIFICATION_MODEL_DEFAULT_CLASSIFICATION_FIELD_NAME;
+        int sfIdx = cloud->addScalarField(qPrintable(defaultClassificationName));
+        if (sfIdx < 0)
+        {
+            QString msg="Cloud has no scalar field";
+            msg+="\nAn error occurred addin default classification field! (see console)";
+            ccLog::Error(msg);
+//            QMessageBox::information(this,
+//                                      TIDOP_TOOLS_RANDOM_FOREST_CLASSIFICATION_DIALOG_TITLE,
+//                                      msg);
+             return;
+        }
+        QString classificationModelName=m_ptrAboutDlg->getClassificationModel();
+        ScalarType noClassifiedSfValue;
+        if(classificationModelName.compare(CC_CLASSIFICATION_MODEL_ASPRS_NAME,Qt::CaseInsensitive)==0)
+        {
+            noClassifiedSfValue=static_cast<ScalarType>(float(CC_CLASSIFICATION_MODEL_ASPRS_NOT_CLASSIFIED_CODE));
+        }
+        else// for all other models
+        {
+            noClassifiedSfValue=static_cast<ScalarType>(float(CC_CLASSIFICATION_MODEL_NO_ASPRS_NOT_CLASSIFIED_CODE));
+        }
+        int scalarFieldIndex=0;
+        CCCoreLib::ScalarField* sf = cloud->getScalarField(scalarFieldIndex);
+        int counter = 0;
+        for (auto it = sf->begin(); it != sf->end(); ++it, ++counter)
+        {
+            sf->setValue(counter,noClassifiedSfValue);
+        }
     }
 
     // set colors schema to RGB
@@ -222,17 +251,46 @@ void qTidopToolsPlugin::doRandomForestClassificationAction()
              return;
         }
         QString classificationModelName=m_ptrAboutDlg->getClassificationModel();
-        if(classificationModelName.compare(CC_CLASSIFICATION_MODEL_ARCHDATASET_NAME,Qt::CaseInsensitive)==0)
+        ScalarType noClassifiedSfValue;
+        if(classificationModelName.compare(CC_CLASSIFICATION_MODEL_ASPRS_NAME,Qt::CaseInsensitive)==0)
         {
-            ScalarType noClassifiedSfValue=static_cast<ScalarType>(float(CC_CLASSIFICATION_MODEL_ARCHDATASET_NOT_CLASSIFIED_CODE));
-            int scalarFieldIndex=0;
-            CCCoreLib::ScalarField* sf = cloud->getScalarField(scalarFieldIndex);
-            int counter = 0;
-            for (auto it = sf->begin(); it != sf->end(); ++it, ++counter)
-            {
-                sf->setValue(counter,noClassifiedSfValue);
-            }
+            noClassifiedSfValue=static_cast<ScalarType>(float(CC_CLASSIFICATION_MODEL_ASPRS_NOT_CLASSIFIED_CODE));
         }
+        else// for all other models
+        {
+            noClassifiedSfValue=static_cast<ScalarType>(float(CC_CLASSIFICATION_MODEL_NO_ASPRS_NOT_CLASSIFIED_CODE));
+        }
+        int scalarFieldIndex=0;
+        CCCoreLib::ScalarField* sf = cloud->getScalarField(scalarFieldIndex);
+        int counter = 0;
+        for (auto it = sf->begin(); it != sf->end(); ++it, ++counter)
+        {
+            sf->setValue(counter,noClassifiedSfValue);
+        }
+//        QString defaultClassificationName=CC_CLASSIFICATION_MODEL_DEFAULT_CLASSIFICATION_FIELD_NAME;
+//        int sfIdx = cloud->addScalarField(qPrintable(defaultClassificationName));
+//        if (sfIdx < 0)
+//        {
+//            QString msg="Cloud has no scalar field";
+//            msg+="\nAn error occurred addin default classification field! (see console)";
+//            ccLog::Error(msg);
+////            QMessageBox::information(this,
+////                                      TIDOP_TOOLS_RANDOM_FOREST_CLASSIFICATION_DIALOG_TITLE,
+////                                      msg);
+//             return;
+//        }
+//        QString classificationModelName=m_ptrAboutDlg->getClassificationModel();
+//        if(classificationModelName.compare(CC_CLASSIFICATION_MODEL_ARCHDATASET_NAME,Qt::CaseInsensitive)==0)
+//        {
+//            ScalarType noClassifiedSfValue=static_cast<ScalarType>(float(CC_CLASSIFICATION_MODEL_ARCHDATASET_NOT_CLASSIFIED_CODE));
+//            int scalarFieldIndex=0;
+//            CCCoreLib::ScalarField* sf = cloud->getScalarField(scalarFieldIndex);
+//            int counter = 0;
+//            for (auto it = sf->begin(); it != sf->end(); ++it, ++counter)
+//            {
+//                sf->setValue(counter,noClassifiedSfValue);
+//            }
+//        }
     }
 
     // set colors schema to RGB

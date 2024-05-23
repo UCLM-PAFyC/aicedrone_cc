@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.1, 2024-05-16T19:05:24. -->
+<!-- Written by QtCreator 7.0.1, 2024-05-22T18:57:36. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -92,9 +92,9 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Qt 5.15.2 MSVC2019 64 bit</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Qt 5.15.2 MSVC2019 64 bit</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{bb9f82cf-f573-42f5-8cd8-1bd8dfbe9d20}</value>
-   <value type="qlonglong" key="ProjectExplorer.Target.ActiveBuildConfiguration">1</value>
+   <value type="qlonglong" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="qlonglong" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
-   <value type="qlonglong" key="ProjectExplorer.Target.ActiveRunConfiguration">3</value>
+   <value type="qlonglong" key="ProjectExplorer.Target.ActiveRunConfiguration">2</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <value type="QString" key="CMake.Build.Type">Debug</value>
     <value type="QString" key="CMake.Initial.Parameters">-DCMAKE_GENERATOR:STRING=NMake Makefiles JOM
@@ -314,7 +314,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory">E:/dev/depends/CloudCompare_osgeo4w_3_28_9/release/CloudCompare</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">E:/dev/src_osgeo4w_3_28_9/qt5projects/build-CloudCompare-Qt_5_15_2_MSVC2019_64_bit-Release/qCC</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">E:/dev/src_osgeo4w_3_28_9/qt5projects/build-CloudCompare-Qt_5_15_2_MSVC2019_64_bit-Debug/qCC</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
@@ -332,7 +332,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory">E:/dev/depends/CloudCompare_osgeo4w_3_28_9/release/ccViewer</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">E:/dev/src_osgeo4w_3_28_9/qt5projects/build-CloudCompare-Qt_5_15_2_MSVC2019_64_bit-Release/ccViewer</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">E:/dev/src_osgeo4w_3_28_9/qt5projects/build-CloudCompare-Qt_5_15_2_MSVC2019_64_bit-Debug/ccViewer</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.2">
     <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>

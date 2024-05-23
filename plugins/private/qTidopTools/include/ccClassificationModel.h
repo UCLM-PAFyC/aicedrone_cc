@@ -1,5 +1,3 @@
-#pragma once
-
 //##########################################################################
 //#                                                                        #
 //#                     TIDOPTOOLS PLUGIN: qTidopTools                     #
@@ -16,6 +14,8 @@
 //#      COPYRIGHT: TIDOP-USAL / PAFYC-UCLM                                #
 //#                                                                        #
 //##########################################################################
+
+#pragma once
 
 //Qt
 #include <QAbstractTableModel>
@@ -55,6 +55,7 @@ public:
 		NAME,
 		CODE,
 		COLOR,
+		RGB,
 		COUNT,
         LOCKED,
         TRAIN,
@@ -67,6 +68,7 @@ public:
 		QString name;
 		int code;
 		QColor color;
+		bool rgb;
 		int count;
         bool locked;
         bool train;
@@ -83,6 +85,7 @@ public:
     Item* findByTag(QString tag);
     Item* getSelectedItem();
     Item* getRemovedItem();
+    Item* getNotClassifiedItem();
 
 	int indexOf(QString name) const;
 
@@ -103,6 +106,7 @@ private:
     QList<Item> m_data;
     int m_removedIndexCode;
     int m_selectedIndexCode;
+    int m_notClassifiedIndexCode;
     QMap<int,QString> m_tagByCode; // "1 - Unclassified"
     int m_noiseCode;
     QString m_modelName;

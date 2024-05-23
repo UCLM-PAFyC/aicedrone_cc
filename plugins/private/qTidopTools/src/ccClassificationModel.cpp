@@ -38,6 +38,14 @@ ccClassificationModel::ccClassificationModel(QString classificationModelName,
     m_removedIndexCode=CC_CLASSIFICATION_MODEL_REMOVED_CODE;
     m_selectedIndexCode=CC_CLASSIFICATION_MODEL_SELECTED_CODE;
     m_noiseCode=CC_CLASSIFICATION_MODEL_ASPRS_NOISE_CODE;
+    if(classificationModelName.compare(CC_CLASSIFICATION_MODEL_ASPRS_NAME,Qt::CaseInsensitive)==0)
+    {
+        m_notClassifiedIndexCode=CC_CLASSIFICATION_MODEL_ASPRS_NOT_CLASSIFIED_CODE;
+    }
+    else// for all other models
+    {
+        m_notClassifiedIndexCode=CC_CLASSIFICATION_MODEL_NO_ASPRS_NOT_CLASSIFIED_CODE;
+    }
 }
 
 int ccClassificationModel::rowCount(const QModelIndex& parent) const
@@ -72,6 +80,8 @@ QVariant ccClassificationModel::headerData(int section, Qt::Orientation orientat
 		return "Code";
 	case COLOR:
 		return "Color";
+    case RGB:
+        return "RGB";
 	case COUNT:
 		return "Count";
     case LOCKED:
@@ -93,7 +103,7 @@ QVariant ccClassificationModel::data(const QModelIndex& index, int role) const
 
     const Item& item = m_data[index.row()];
     QString itemName = item.name;
-
+    int indexColumn=index.column();
 	// specific case for the VISIBLE column
     if (index.column() == VISIBLE)
 	{
@@ -107,6 +117,18 @@ QVariant ccClassificationModel::data(const QModelIndex& index, int role) const
 			return {};
 		}
 	}
+    if (index.column() == RGB)
+    {
+        // we only provide the value for the 'CheckStateRole' role
+        if (role == Qt::CheckStateRole)
+        {
+            return item.rgb ? Qt::Checked : Qt::Unchecked;
+        }
+        else
+        {
+            return {};
+        }
+    }
     if (index.column() == LOCKED)
     {
         // we only provide the value for the 'CheckStateRole' role
@@ -148,6 +170,8 @@ QVariant ccClassificationModel::data(const QModelIndex& index, int role) const
 		return item.code;
 	case COLOR:
 		return item.color;
+    case RGB:
+        return item.rgb;
 	case COUNT:
 		return item.count;
     case LOCKED:
@@ -242,6 +266,25 @@ bool ccClassificationModel::setData(const QModelIndex& index, const QVariant& va
 	}
 	break;
 
+    case RGB:
+    {
+        if(name.compare(CC_CLASSIFICATION_MODEL_SELECTED_NAME,Qt::CaseInsensitive)==0
+                ||name.compare(CC_CLASSIFICATION_MODEL_REMOVED_NAME,Qt::CaseInsensitive)==0)
+        {
+            return false;
+        }
+        if (role == Qt::CheckStateRole)
+        {
+            item.rgb = static_cast<Qt::CheckState>(value.toInt()) == Qt::Checked;
+            emit colorChanged(item);
+        }
+        else
+        {
+            return false;
+        }
+    }
+    break;
+
 	case COUNT:
 	{
 		item.count = value.toInt();
@@ -308,6 +351,10 @@ Qt::ItemFlags ccClassificationModel::flags(const QModelIndex& index) const
 	{
 		f |= (Qt::ItemIsUserCheckable);
 	}
+    else if (index.column() == RGB)
+    {
+        f |= (Qt::ItemIsUserCheckable);
+    }
     else if (index.column() == LOCKED)
     {
         f |= (Qt::ItemIsUserCheckable);
@@ -373,6 +420,7 @@ static void ReadClass(const QSettings& settings, const QString& className, ccCla
 void ccClassificationModel::createDefaultItems()
 {
 	QSettings settings;
+    settings.clear(); // remove previous values
     if(m_modelName.compare(CC_CLASSIFICATION_MODEL_ASPRS_NAME,
                          Qt::CaseInsensitive)==0)
     {
@@ -524,6 +572,7 @@ void ccClassificationModel::load()
         ccClassificationModel::Item item;
 		ReadClass(settings, classes[i], item);
         item.visible=true;
+        item.rgb=false;
         item.locked=false;
         item.train=false;
 		m_data.append(item);
@@ -534,6 +583,21 @@ void ccClassificationModel::load()
         if(item.name.compare(CC_CLASSIFICATION_MODEL_SELECTED_NAME,Qt::CaseInsensitive)==0)
         {
             m_selectedIndexCode=item.code;
+        }
+        if(m_modelName.compare(CC_CLASSIFICATION_MODEL_ASPRS_NAME,
+                               Qt::CaseInsensitive)==0)
+        {
+            if(item.name.compare(CC_CLASSIFICATION_MODEL_NOT_CLASSIFIED_NAME,Qt::CaseInsensitive)==0)
+            {
+                m_notClassifiedIndexCode=item.code;
+            }
+        }
+        else
+        {
+            if(item.name.compare(CC_CLASSIFICATION_MODEL_NOT_CLASSIFIED_NAME,Qt::CaseInsensitive)==0)
+            {
+                m_notClassifiedIndexCode=item.code;
+            }
         }
     }
 }
@@ -639,6 +703,11 @@ ccClassificationModel::Item* ccClassificationModel::findByTag(QString tag)
     int code=values[0].trimmed().toInt(&okToInt);
     if(!okToInt) return(NULL);
     return(find(code));
+}
+
+ccClassificationModel::Item *ccClassificationModel::getNotClassifiedItem()
+{
+    return(find(m_notClassifiedIndexCode));
 }
 
 ccClassificationModel::Item* ccClassificationModel::getSelectedItem()

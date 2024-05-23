@@ -1,3 +1,20 @@
+//##########################################################################
+//#                                                                        #
+//#                     AICEDRONE PLUGIN: qAicedrone                       #
+//#                                                                        #
+//#  This program is free software; you can redistribute it and/or modify  #
+//#  it under the terms of the GNU General Public License as published by  #
+//#  the Free Software Foundation; version 2 or later of the License.      #
+//#                                                                        #
+//#  This program is distributed in the hope that it will be useful,       #
+//#  but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+//#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the          #
+//#  GNU General Public License for more details.                          #
+//#                                                                        #
+//#      COPYRIGHT: TIDOP-USAL / PAFYC-UCLM                                #
+//#                                                                        #
+//##########################################################################
+
 #include "../include/ccToolsRandomForestClassificationDlg.h"
 #include "../include/ccToolsRandomForestClassificationDefinitions.h"
 #include "libParameters/ParametersManager.h"
@@ -314,6 +331,7 @@ void ccToolsRandomForestClassificationDlg::initTableView()
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::VISIBLE, QHeaderView::ResizeToContents);
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::CODE, QHeaderView::ResizeToContents);
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::COLOR, QHeaderView::ResizeToContents);
+    tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::RGB, QHeaderView::ResizeToContents);
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::COUNT, QHeaderView::ResizeToContents);
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::LOCKED, QHeaderView::ResizeToContents);
     tableView->horizontalHeader()->setSectionResizeMode(ccClassificationModel::TRAIN, QHeaderView::ResizeToContents);

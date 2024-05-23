@@ -1,6 +1,6 @@
 //##########################################################################
 //#                                                                        #
-//#                     AICEDRONETOOLS PLUGIN: qAicedroneTools             #
+//#                     AICEDRONE PLUGIN: qAicedrone                       #
 //#                                                                        #
 //#  This program is free software; you can redistribute it and/or modify  #
 //#  it under the terms of the GNU General Public License as published by  #
@@ -11,7 +11,7 @@
 //#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the          #
 //#  GNU General Public License for more details.                          #
 //#                                                                        #
-//#      COPYRIGHT AICEDRONE PROJECT: ROVER / PAFYC-UCLM                   #
+//#      COPYRIGHT: TIDOP-USAL / PAFYC-UCLM                                #
 //#                                                                        #
 //##########################################################################
 
@@ -164,10 +164,42 @@ void qAicedroneToolsPlugin::doManualClassificationAction()
     // get first selected cloud
     ccPointCloud* cloud = static_cast<ccPointCloud*>(selectedEntities.front());
 
+//    if (!cloud->hasScalarFields())
+//    {
+//        ccLog::Error("Cloud has no scalar field");
+//        return;
+//    }
     if (!cloud->hasScalarFields())
     {
-        ccLog::Error("Cloud has no scalar field");
-        return;
+        QString defaultClassificationName=CC_CLASSIFICATION_MODEL_DEFAULT_CLASSIFICATION_FIELD_NAME;
+        int sfIdx = cloud->addScalarField(qPrintable(defaultClassificationName));
+        if (sfIdx < 0)
+        {
+            QString msg="Cloud has no scalar field";
+            msg+="\nAn error occurred addin default classification field! (see console)";
+            ccLog::Error(msg);
+//            QMessageBox::information(this,
+//                                      TIDOP_TOOLS_RANDOM_FOREST_CLASSIFICATION_DIALOG_TITLE,
+//                                      msg);
+             return;
+        }
+        QString classificationModelName=m_ptrAboutDlg->getClassificationModel();
+        ScalarType noClassifiedSfValue;
+        if(classificationModelName.compare(CC_CLASSIFICATION_MODEL_ASPRS_NAME,Qt::CaseInsensitive)==0)
+        {
+            noClassifiedSfValue=static_cast<ScalarType>(float(CC_CLASSIFICATION_MODEL_ASPRS_NOT_CLASSIFIED_CODE));
+        }
+        else// for all other models
+        {
+            noClassifiedSfValue=static_cast<ScalarType>(float(CC_CLASSIFICATION_MODEL_NO_ASPRS_NOT_CLASSIFIED_CODE));
+        }
+        int scalarFieldIndex=0;
+        CCCoreLib::ScalarField* sf = cloud->getScalarField(scalarFieldIndex);
+        int counter = 0;
+        for (auto it = sf->begin(); it != sf->end(); ++it, ++counter)
+        {
+            sf->setValue(counter,noClassifiedSfValue);
+        }
     }
 
     // set colors schema to RGB
@@ -239,16 +271,21 @@ void qAicedroneToolsPlugin::doRandomForestClassificationAction()
              return;
         }
         QString classificationModelName=m_ptrAboutDlg->getClassificationModel();
-        if(classificationModelName.compare(CC_CLASSIFICATION_MODEL_BREAKWATER_CUBES_NAME,Qt::CaseInsensitive)==0)
+        ScalarType noClassifiedSfValue;
+        if(classificationModelName.compare(CC_CLASSIFICATION_MODEL_ASPRS_NAME,Qt::CaseInsensitive)==0)
         {
-            ScalarType noClassifiedSfValue=static_cast<ScalarType>(float(CC_CLASSIFICATION_MODEL_NO_ASPRS_NOT_CLASSIFIED_CODE));
-            int scalarFieldIndex=0;
-            CCCoreLib::ScalarField* sf = cloud->getScalarField(scalarFieldIndex);
-            int counter = 0;
-            for (auto it = sf->begin(); it != sf->end(); ++it, ++counter)
-            {
-                sf->setValue(counter,noClassifiedSfValue);
-            }
+            noClassifiedSfValue=static_cast<ScalarType>(float(CC_CLASSIFICATION_MODEL_ASPRS_NOT_CLASSIFIED_CODE));
+        }
+        else// for all other models
+        {
+            noClassifiedSfValue=static_cast<ScalarType>(float(CC_CLASSIFICATION_MODEL_NO_ASPRS_NOT_CLASSIFIED_CODE));
+        }
+        int scalarFieldIndex=0;
+        CCCoreLib::ScalarField* sf = cloud->getScalarField(scalarFieldIndex);
+        int counter = 0;
+        for (auto it = sf->begin(); it != sf->end(); ++it, ++counter)
+        {
+            sf->setValue(counter,noClassifiedSfValue);
         }
     }
 

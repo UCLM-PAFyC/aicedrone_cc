@@ -1,6 +1,6 @@
 //##########################################################################
 //#                                                                        #
-//#                     AICEDRONETOOLS PLUGIN: qAicedroneTools             #
+//#                     AICEDRONE PLUGIN: qAicedrone                       #
 //#                                                                        #
 //#  This program is free software; you can redistribute it and/or modify  #
 //#  it under the terms of the GNU General Public License as published by  #
@@ -11,7 +11,7 @@
 //#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the          #
 //#  GNU General Public License for more details.                          #
 //#                                                                        #
-//#      COPYRIGHT: AICEDRONE PROJECT: ROVER / PAFYC-UCLM                  #
+//#      COPYRIGHT: TIDOP-USAL / PAFYC-UCLM                                #
 //#                                                                        #
 //##########################################################################
 

@@ -1,3 +1,20 @@
+//##########################################################################
+//#                                                                        #
+//#                     AICEDRONE PLUGIN: qAicedrone                       #
+//#                                                                        #
+//#  This program is free software; you can redistribute it and/or modify  #
+//#  it under the terms of the GNU General Public License as published by  #
+//#  the Free Software Foundation; version 2 or later of the License.      #
+//#                                                                        #
+//#  This program is distributed in the hope that it will be useful,       #
+//#  but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+//#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the          #
+//#  GNU General Public License for more details.                          #
+//#                                                                        #
+//#      COPYRIGHT: TIDOP-USAL / PAFYC-UCLM                                #
+//#                                                                        #
+//##########################################################################
+
 #include "../include/ccToolsClassificationHelper.h"
 #include "../include/ccMouseCircle.h"
 
@@ -43,7 +60,13 @@ ccToolsClassificationHelper::ccToolsClassificationHelper(ccMainAppInterface* app
 			{
 				ccLog::Error("Not enough memory to backup previous colors");
 			}
-		}
+            unsigned cloudSize = m_ptrCloud->size();
+            m_cloudOriginalRGB.resize(cloudSize);
+            for (unsigned i = 0; i < cloudSize; ++i)
+            {
+                m_cloudOriginalRGB[i]= m_ptrCloud->getPointColor(i);
+            }
+        }
 		else
 		{
 			// check memory for rgb colors
@@ -53,8 +76,8 @@ ccToolsClassificationHelper::ccToolsClassificationHelper(ccMainAppInterface* app
 			}
 		}
 
-		cloud->showColors(true);
-		cloud->showSF(false);
+        m_ptrCloud->showColors(true);
+        m_ptrCloud->showSF(false);
 	}
 }
 
@@ -241,6 +264,9 @@ int ccToolsClassificationHelper::apply(ccClassificationModel::Item& item, bool r
 	{
 		if ((*it) == code)
 		{
+            if(item.rgb&&item.visible
+                    &&counter<m_cloudOriginalRGB.size())
+                ccColor=m_cloudOriginalRGB[counter];
             m_ptrCloud->setPointColor(counter, ccColor);
 			++affected;
 		}
