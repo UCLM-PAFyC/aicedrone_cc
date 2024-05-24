@@ -530,7 +530,23 @@ void ccToolsClassificationHelper::mouseMove(const CCVector2& center,
             {
                 const CloudState& state = m_cloudStateNew[i];
                 sf->setValue(i, state.code);
-                m_ptrCloud->setPointColor(i, state.color);
+                int stateCodeInt=qRound(state.code);
+                ccClassificationModel::Item* item=ptrClassificationModel->find(stateCodeInt);
+                if(item==nullptr) continue;
+                sf->setValue(i, state.code);
+                if(item->rgb&&i<m_cloudOriginalRGB.size())
+                {
+                    ccColor::Rgba ccColor=m_cloudOriginalRGB[i];
+                    ccColor.a = item->visible ? ccColor::MAX : 0;
+                    m_ptrCloud->setPointColor(i, ccColor);
+                }
+                else
+                {
+                    ccColor::Rgba ccColor=state.color;
+                    ccColor.a = item->visible ? ccColor::MAX : 0;
+                    m_ptrCloud->setPointColor(i, ccColor);
+                }
+//                m_ptrCloud->setPointColor(i, state.color);
                 --affected[outputCode];
                 ++affected[state.code];
                 if(unselect&&affected[outputCode]==0) m_selected=false;
@@ -631,8 +647,23 @@ void ccToolsClassificationHelper::pointsInPolygon(ccPolyline* m_segmentationPoly
             if(qRound(code) == qRound(outputCode))
             {
                 const CloudState& state = m_cloudStateNew[i];
+                int stateCodeInt=qRound(state.code);
+                ccClassificationModel::Item* item=ptrClassificationModel->find(stateCodeInt);
+                if(item==nullptr) continue;
                 sf->setValue(i, state.code);
-                m_ptrCloud->setPointColor(i, state.color);
+                if(item->rgb&&i<m_cloudOriginalRGB.size())
+                {
+                    ccColor::Rgba ccColor=m_cloudOriginalRGB[i];
+                    ccColor.a = item->visible ? ccColor::MAX : 0;
+                    m_ptrCloud->setPointColor(i, ccColor);
+                }
+                else
+                {
+                    ccColor::Rgba ccColor=state.color;
+                    ccColor.a = item->visible ? ccColor::MAX : 0;
+                    m_ptrCloud->setPointColor(i, ccColor);
+                }
+//                m_ptrCloud->setPointColor(i, state.color);
                 --affected[outputCode];
                 ++affected[state.code];
                 if(unselect&&affected[outputCode]==0) m_selected=false;
@@ -722,7 +753,24 @@ void ccToolsClassificationHelper::toolChangeClass(std::map<ScalarType, int> &aff
         const CloudState& state = m_cloudStateNew[i];
         if(qRound(state.code)==qRound(outputCode)) continue; // point in target class
         sf->setValue(i, outputCode);
-        m_ptrCloud->setPointColor(i, outputColor);
+
+        int outputCodeInt=qRound(outputCode);
+        ccClassificationModel::Item* item=ptrClassificationModel->find(outputCodeInt);
+        if(item==nullptr) continue;
+        if(item->rgb&&i<m_cloudOriginalRGB.size())
+        {
+            ccColor::Rgba ccColor=m_cloudOriginalRGB[i];
+            ccColor.a = item->visible ? ccColor::MAX : 0;
+            m_ptrCloud->setPointColor(i, ccColor);
+        }
+        else
+        {
+            ccColor::Rgba ccColor=outputColor;
+            ccColor.a = item->visible ? ccColor::MAX : 0;
+            m_ptrCloud->setPointColor(i, ccColor);
+        }
+//        m_ptrCloud->setPointColor(i, outputColor);
+
         m_cloudStateNew[i].code=outputCode;
         m_cloudStateNew[i].color=outputColor;
         --affected[selectedCode];
@@ -756,8 +804,23 @@ void ccToolsClassificationHelper::toolRecoverClass(std::map<ScalarType, int> &af
 
         ScalarType code = sf->getValue(i);
         if(qRound(code)!=qRound(selectedCode)) continue; // only change selected points
+        int stateCodeOldInt=qRound(m_cloudStateOld[i].code);
+        ccClassificationModel::Item* item=ptrClassificationModel->find(stateCodeOldInt);
+        if(item==nullptr) continue;
         sf->setValue(i, m_cloudStateOld[i].code);
-        m_ptrCloud->setPointColor(i, m_cloudStateOld[i].color);
+        if(item->rgb&&i<m_cloudOriginalRGB.size())
+        {
+            ccColor::Rgba ccColor=m_cloudOriginalRGB[i];
+            ccColor.a = item->visible ? ccColor::MAX : 0;
+            m_ptrCloud->setPointColor(i, ccColor);
+        }
+        else
+        {
+            ccColor::Rgba ccColor= m_cloudStateOld[i].color;
+            ccColor.a = item->visible ? ccColor::MAX : 0;
+            m_ptrCloud->setPointColor(i, ccColor);
+        }
+//        m_ptrCloud->setPointColor(i, m_cloudStateOld[i].color);
         m_cloudStateNew[i].code=m_cloudStateOld[i].code;
         m_cloudStateNew[i].color=m_cloudStateOld[i].color;
         --affected[selectedCode];
@@ -793,16 +856,40 @@ void ccToolsClassificationHelper::toolSelectOnly(std::map<ScalarType, int> &affe
         ScalarType code = sf->getValue(i);
         if(qRound(code)!=qRound(selectedCode)) continue;
         const CloudState& state = m_cloudStateNew[i];
-        if(targetItemsCode.contains(qRound(state.code))) continue;
+
+//        if(targetItemsCode.contains(qRound(state.code))) continue;
+//        else
+//        {
+//            sf->setValue(i, state.code);
+//            m_ptrCloud->setPointColor(i, state.color);
+//            --affected[selectedCode];
+//            ++affected[state.code];
+//            if(affected[selectedCode]==0) m_selected=false;
+//            changes=true;
+//        }
+
+        int stateCodeInt=qRound(state.code);
+        if(!targetItemsCode.contains(stateCodeInt)) continue;
+        ccClassificationModel::Item* item=ptrClassificationModel->find(stateCodeInt);
+        if(item==nullptr) continue;
+        sf->setValue(i, state.code);
+        if(item->rgb&&i<m_cloudOriginalRGB.size())
+        {
+            ccColor::Rgba ccColor=m_cloudOriginalRGB[i];
+            ccColor.a = item->visible ? ccColor::MAX : 0;
+            m_ptrCloud->setPointColor(i, ccColor);
+        }
         else
         {
-            sf->setValue(i, state.code);
-            m_ptrCloud->setPointColor(i, state.color);
-            --affected[selectedCode];
-            ++affected[state.code];
-            if(affected[selectedCode]==0) m_selected=false;
-            changes=true;
+            ccColor::Rgba ccColor=state.color;
+            ccColor.a = item->visible ? ccColor::MAX : 0;
+            m_ptrCloud->setPointColor(i, ccColor);
         }
+        --affected[selectedCode];
+        ++affected[state.code];
+        if(affected[selectedCode]==0) m_selected=false;
+        changes=true;
+
     }
     if(changes) m_ptrCloud->redrawDisplay();
 }
@@ -832,16 +919,27 @@ void ccToolsClassificationHelper::toolUnselect(std::map<ScalarType, int> &affect
         ScalarType code = sf->getValue(i);
         if(qRound(code)!=qRound(selectedCode)) continue;
         const CloudState& state = m_cloudStateNew[i];
-        if(!targetItemsCode.contains(qRound(state.code))) continue;
+        int stateCodeInt=qRound(state.code);
+        if(!targetItemsCode.contains(stateCodeInt)) continue;
+        ccClassificationModel::Item* item=ptrClassificationModel->find(stateCodeInt);
+        if(item==nullptr) continue;
+        sf->setValue(i, state.code);
+        if(item->rgb&&i<m_cloudOriginalRGB.size())
+        {
+            ccColor::Rgba ccColor=m_cloudOriginalRGB[i];
+            ccColor.a = item->visible ? ccColor::MAX : 0;
+            m_ptrCloud->setPointColor(i, ccColor);
+        }
         else
         {
-            sf->setValue(i, state.code);
-            m_ptrCloud->setPointColor(i, state.color);
-            --affected[selectedCode];
-            ++affected[state.code];
-            if(affected[selectedCode]==0) m_selected=false;
-            changes=true;
+            ccColor::Rgba ccColor=state.color;
+            ccColor.a = item->visible ? ccColor::MAX : 0;
+            m_ptrCloud->setPointColor(i, ccColor);
         }
+        --affected[selectedCode];
+        ++affected[state.code];
+        if(affected[selectedCode]==0) m_selected=false;
+        changes=true;
     }
     if(changes) m_ptrCloud->redrawDisplay();
 }
@@ -871,16 +969,38 @@ void ccToolsClassificationHelper::toolRecover(std::map<ScalarType, int> &affecte
         ScalarType code = sf->getValue(i);
         if(qRound(code)!=qRound(removedCode)) continue;
         const CloudState& state = m_cloudStateNew[i];
-        if(!targetItemsCode.contains(qRound(state.code))) continue;
+//        if(!targetItemsCode.contains(qRound(state.code))) continue;
+//        else
+//        {
+//            sf->setValue(i, state.code);
+//            m_ptrCloud->setPointColor(i, state.color);
+//            --affected[removedCode];
+//            ++affected[state.code];
+//            if(affected[removedCode]==0) m_removed=false;
+//            changes=true;
+//        }
+        int stateCodeInt=qRound(state.code);
+        if(!targetItemsCode.contains(stateCodeInt)) continue;
+        ccClassificationModel::Item* item=ptrClassificationModel->find(stateCodeInt);
+        if(item==nullptr) continue;
+        sf->setValue(i, state.code);
+        if(item->rgb&&i<m_cloudOriginalRGB.size())
+        {
+            ccColor::Rgba ccColor=m_cloudOriginalRGB[i];
+            ccColor.a = item->visible ? ccColor::MAX : 0;
+            m_ptrCloud->setPointColor(i, ccColor);
+        }
         else
         {
-            sf->setValue(i, state.code);
-            m_ptrCloud->setPointColor(i, state.color);
-            --affected[removedCode];
-            ++affected[state.code];
-            if(affected[removedCode]==0) m_removed=false;
-            changes=true;
+            ccColor::Rgba ccColor=state.color;
+            ccColor.a = item->visible ? ccColor::MAX : 0;
+            m_ptrCloud->setPointColor(i, ccColor);
         }
+        --affected[removedCode];
+        ++affected[state.code];
+        if(affected[removedCode]==0) m_removed=false;
+        changes=true;
+
     }
     if(changes) m_ptrCloud->redrawDisplay();
 }
@@ -913,6 +1033,7 @@ void ccToolsClassificationHelper::toolRemove(std::map<ScalarType, int> &affected
         ScalarType code = sf->getValue(i);
         if(qRound(code)!=qRound(selectedCode)) continue;
         const CloudState& state = m_cloudStateNew[i];
+
         if(!targetItemsCode.contains(qRound(state.code))) continue;
         else
         {
@@ -924,6 +1045,29 @@ void ccToolsClassificationHelper::toolRemove(std::map<ScalarType, int> &affected
             if(affected[outputCode]==0) m_removed=false;
             changes=true;
         }
+
+//        int stateCodeInt=qRound(state.code);
+//        if(!targetItemsCode.contains(stateCodeInt)) continue;
+//        ccClassificationModel::Item* item=ptrClassificationModel->find(stateCodeInt);
+//        if(item==nullptr) continue;
+//        sf->setValue(i, outputCode);
+//        if(item->rgb&&i<m_cloudOriginalRGB.size())
+//        {
+//            ccColor::Rgba ccColor=m_cloudOriginalRGB[i];
+//            ccColor.a = item->visible ? ccColor::MAX : 0;
+//            m_ptrCloud->setPointColor(i, ccColor);
+//        }
+//        else
+//        {
+//            ccColor::Rgba ccColor=outputColor;
+//            ccColor.a = item->visible ? ccColor::MAX : 0;
+//            m_ptrCloud->setPointColor(i, ccColor);
+//        }
+//        --affected[selectedCode];
+//        ++affected[outputColor];
+//        if(affected[outputColor]==0) m_removed=false;
+//        changes=true;
+
     }
     if(changes) m_ptrCloud->redrawDisplay();
 }

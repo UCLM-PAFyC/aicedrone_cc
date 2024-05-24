@@ -155,15 +155,15 @@ private: // variables
 	public:
 		CloudState() {}
 
-		void update(ScalarType code, ccColor::Rgb color)
+        void update(ScalarType code, ccColor::Rgba color)
 		{
 			this->code = code;
 			this->color = color;
 		}
 
 		ScalarType code;
-		ccColor::Rgb color;
-	};
+        ccColor::Rgba color;
+    };
 
     std::vector<CloudState> m_cloudStateOld;
     std::vector<CloudState> m_cloudStateNew;
