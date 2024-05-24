@@ -638,14 +638,37 @@ void ccToolsRandomForestClassificationDlg::applyClicked()
 {
     m_ptrHelper->removePoints(m_ptrClassificationModel);
     m_ptrClassificationModel->save();
-	
+    if (m_ptrHelper->cloud()->hasScalarFields())
+    {
+        unsigned sfCount = m_ptrHelper->cloud()->getNumberOfScalarFields();
+        QStringList scalarFields;
+        for (unsigned i = 0; i < sfCount; ++i)
+        {
+            QString scalarFieldName=m_ptrHelper->cloud()->getScalarFieldName(i);
+            int scalarFieldIdx = m_ptrHelper->cloud()->getScalarFieldIndexByName(qPrintable(scalarFieldName));
+            if (scalarFieldIdx>=0)
+            {
+                CCCoreLib::ScalarField* scalarField = m_ptrHelper->cloud()->getScalarField(scalarFieldIdx);
+                scalarField->computeMinAndMax();
+            }
+        }
+    }
     saveSettings();
 	
     if (m_ptrHelper)
     {
         m_ptrHelper->setVisible(true);
     }
-
+    int activeScalarFieldIdx=0;
+    QString currentFieldName=cbScalarField->currentText();
+    if(currentFieldName.compare(TOOLS_RANDOM_FOREST_CLASSIFICATION_DIALOG_NO_COMBO_SELECT,
+                                Qt::CaseInsensitive)!=0)
+    {
+        activeScalarFieldIdx = m_ptrHelper->cloud()->getScalarFieldIndexByName(qPrintable(currentFieldName));
+    }
+    m_ptrHelper->cloud()->setCurrentDisplayedScalarField(activeScalarFieldIdx);
+//    m_ptrHelper->cloud()->showSFColorsScale(true);
+    m_ptrApp->updateUI();// updatePropertiesView();
     stop(true);
 }
 
