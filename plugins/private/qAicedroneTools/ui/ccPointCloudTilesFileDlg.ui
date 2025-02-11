@@ -86,15 +86,15 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="projectDefinitionPage">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>557</width>
-        <height>565</height>
+        <width>555</width>
+        <height>562</height>
        </rect>
       </property>
       <attribute name="label">
@@ -106,11 +106,11 @@
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>250</height>
+           <height>16777215</height>
           </size>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="createNewProjectTab">
           <attribute name="title">
@@ -123,13 +123,13 @@
               <widget class="QLabel" name="projectTypeLabel">
                <property name="minimumSize">
                 <size>
-                 <width>75</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>70</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -140,6 +140,12 @@
              </item>
              <item>
               <widget class="QComboBox" name="projectTypeComboBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="toolTip">
                 <string>Only &quot;Generic&quot; in this plugin version</string>
                </property>
@@ -147,6 +153,12 @@
              </item>
              <item>
               <widget class="QLabel" name="label">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="minimumSize">
                 <size>
                  <width>80</width>
@@ -155,7 +167,7 @@
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>70</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -171,13 +183,13 @@
               <widget class="QComboBox" name="gridSizeComboBox">
                <property name="minimumSize">
                 <size>
-                 <width>75</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>75</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -190,13 +202,13 @@
               <widget class="QPushButton" name="projectParametersPushButton">
                <property name="minimumSize">
                 <size>
-                 <width>75</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>75</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -216,13 +228,13 @@
               <widget class="QLabel" name="projectCrsLbel">
                <property name="minimumSize">
                 <size>
-                 <width>30</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>30</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -232,19 +244,26 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="horizontalCRSsComboBox"/>
+              <widget class="QComboBox" name="horizontalCRSsComboBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QLabel" name="projectAltitudeLabel">
                <property name="minimumSize">
                 <size>
-                 <width>68</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>40</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -260,13 +279,13 @@
               <widget class="QComboBox" name="verticalCRSsComboBox">
                <property name="minimumSize">
                 <size>
-                 <width>90</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>90</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -280,13 +299,13 @@
               <widget class="QPushButton" name="projectPathPushButton">
                <property name="minimumSize">
                 <size>
-                 <width>50</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>50</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -309,13 +328,13 @@
               <widget class="QPushButton" name="roisPushButton">
                <property name="minimumSize">
                 <size>
-                 <width>50</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>50</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -331,7 +350,7 @@
               <widget class="QLineEdit" name="numberOfRoisLineEdit">
                <property name="minimumSize">
                 <size>
-                 <width>50</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
@@ -370,13 +389,13 @@
               <widget class="QPushButton" name="createProjectPushButton">
                <property name="minimumSize">
                 <size>
-                 <width>75</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>75</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -416,15 +435,21 @@
               <layout class="QHBoxLayout" name="horizontalLayout_5">
                <item>
                 <widget class="QLabel" name="addPCFsCrsLbel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="minimumSize">
                   <size>
-                   <width>30</width>
+                   <width>0</width>
                    <height>0</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>30</width>
+                   <width>16777215</width>
                    <height>16777215</height>
                   </size>
                  </property>
@@ -434,19 +459,32 @@
                 </widget>
                </item>
                <item>
-                <widget class="QComboBox" name="addPCFsHorizontalCRSsComboBox"/>
+                <widget class="QComboBox" name="addPCFsHorizontalCRSsComboBox">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                </widget>
                </item>
                <item>
                 <widget class="QLabel" name="addPCFsAltitudeLabel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="minimumSize">
                   <size>
-                   <width>68</width>
+                   <width>0</width>
                    <height>0</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>40</width>
+                   <width>16777215</width>
                    <height>16777215</height>
                   </size>
                  </property>
@@ -460,15 +498,21 @@
                </item>
                <item>
                 <widget class="QComboBox" name="addPCFsVerticalCRSsComboBox">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="minimumSize">
                   <size>
-                   <width>90</width>
+                   <width>0</width>
                    <height>0</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>90</width>
+                   <width>16777215</width>
                    <height>16777215</height>
                   </size>
                  </property>
@@ -482,13 +526,13 @@
                 <widget class="QPushButton" name="selectPCFsPushButton">
                  <property name="minimumSize">
                   <size>
-                   <width>50</width>
+                   <width>0</width>
                    <height>0</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>50</width>
+                   <width>16777215</width>
                    <height>16777215</height>
                   </size>
                  </property>
@@ -520,7 +564,7 @@
                 <widget class="QLabel" name="label_3">
                  <property name="minimumSize">
                   <size>
-                   <width>140</width>
+                   <width>0</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -546,13 +590,13 @@
                 <widget class="QPushButton" name="addPCFsProcessPushButton">
                  <property name="minimumSize">
                   <size>
-                   <width>75</width>
+                   <width>0</width>
                    <height>0</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>75</width>
+                   <width>16777215</width>
                    <height>16777215</height>
                   </size>
                  </property>
@@ -616,7 +660,7 @@
                <widget class="QLineEdit" name="exportPPCFsSuffixLineEdit">
                 <property name="maximumSize">
                  <size>
-                  <width>100</width>
+                  <width>16777215</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -689,7 +733,7 @@
                <widget class="QPushButton" name="reclassificationConfusionMatrixReportSelectClassesPushButton">
                 <property name="maximumSize">
                  <size>
-                  <width>50</width>
+                  <width>16777215</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -782,7 +826,7 @@
           <widget class="QPushButton" name="addProjectPushButton">
            <property name="maximumSize">
             <size>
-             <width>40</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -796,9 +840,15 @@
          </item>
          <item>
           <widget class="QComboBox" name="projectsComboBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
-             <width>150</width>
+             <width>0</width>
              <height>0</height>
             </size>
            </property>
@@ -811,13 +861,13 @@
           <widget class="QPushButton" name="openProjectPushButton">
            <property name="minimumSize">
             <size>
-             <width>50</width>
+             <width>0</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -833,13 +883,13 @@
           <widget class="QPushButton" name="closeProjectPushButton">
            <property name="minimumSize">
             <size>
-             <width>50</width>
+             <width>0</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -855,7 +905,7 @@
           <widget class="QPushButton" name="removeProjectPushButton">
            <property name="maximumSize">
             <size>
-             <width>60</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -889,8 +939,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>557</width>
-        <height>565</height>
+        <width>555</width>
+        <height>562</height>
        </rect>
       </property>
       <attribute name="label">
@@ -917,7 +967,7 @@
           <widget class="QPushButton" name="loadOrthomosaicPushButton">
            <property name="maximumSize">
             <size>
-             <width>60</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -957,7 +1007,7 @@
               <widget class="QLabel" name="label_12">
                <property name="minimumSize">
                 <size>
-                 <width>50</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
@@ -1073,7 +1123,7 @@
                <widget class="QPushButton" name="addModelDbPushButton">
                 <property name="maximumSize">
                  <size>
-                  <width>40</width>
+                  <width>16777215</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -1087,6 +1137,12 @@
               </item>
               <item row="0" column="1">
                <widget class="QComboBox" name="modelDbsComboBox">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="minimumSize">
                  <size>
                   <width>150</width>
@@ -1117,13 +1173,13 @@
                  <widget class="QPushButton" name="openModelDbPushButton">
                   <property name="minimumSize">
                    <size>
-                    <width>50</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>50</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1139,13 +1195,13 @@
                  <widget class="QPushButton" name="closeModelDbPushButton">
                   <property name="minimumSize">
                    <size>
-                    <width>50</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>50</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1161,7 +1217,7 @@
                  <widget class="QPushButton" name="removeModelDbPushButton">
                   <property name="maximumSize">
                    <size>
-                    <width>60</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1181,13 +1237,13 @@
                  <widget class="QFrame" name="visibleModelClassesFrame">
                   <property name="minimumSize">
                    <size>
-                    <width>140</width>
+                    <width>0</width>
                     <height>25</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>140</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1203,13 +1259,13 @@
                  <widget class="QFrame" name="visibleModelObjectsFrame">
                   <property name="minimumSize">
                    <size>
-                    <width>180</width>
+                    <width>0</width>
                     <height>25</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>180</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1225,13 +1281,13 @@
                  <widget class="QPushButton" name="visibleModelObjectsNonePushButton">
                   <property name="minimumSize">
                    <size>
-                    <width>50</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>50</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1247,13 +1303,13 @@
                  <widget class="QPushButton" name="visibleModelObjectsAllPushButton">
                   <property name="minimumSize">
                    <size>
-                    <width>50</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>50</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1273,13 +1329,13 @@
                  <widget class="QLabel" name="label_4">
                   <property name="minimumSize">
                    <size>
-                    <width>41</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>50</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1292,13 +1348,13 @@
                  <widget class="QComboBox" name="modelDbObjectComboBox">
                   <property name="minimumSize">
                    <size>
-                    <width>120</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>1200</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1309,15 +1365,21 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="label_5">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="minimumSize">
                    <size>
-                    <width>60</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>65</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1330,13 +1392,13 @@
                  <widget class="QComboBox" name="modelDbObjectCandidateComboBox">
                   <property name="minimumSize">
                    <size>
-                    <width>60</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1347,9 +1409,15 @@
                 </item>
                 <item>
                  <widget class="QComboBox" name="processModelDbObjectComboBox">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="minimumSize">
                    <size>
-                    <width>110</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -1362,13 +1430,13 @@
                  <widget class="QPushButton" name="processModelDbObjectPushButton">
                   <property name="minimumSize">
                    <size>
-                    <width>60</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>60</width>
+                    <width>16777215</width>
                     <height>16777215</height>
                    </size>
                   </property>
@@ -1391,7 +1459,7 @@
               <widget class="QCheckBox" name="showObjectNamesCheckBox">
                <property name="minimumSize">
                 <size>
-                 <width>130</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
@@ -1420,7 +1488,7 @@
               <widget class="QPushButton" name="loadTilesPushButton">
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -1443,7 +1511,7 @@
               <widget class="QPushButton" name="unloadTilesPushButton">
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -1472,7 +1540,7 @@
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>60</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -1530,8 +1598,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>557</width>
-        <height>565</height>
+        <width>555</width>
+        <height>562</height>
        </rect>
       </property>
       <attribute name="label">
@@ -1550,13 +1618,13 @@
              <widget class="QLabel" name="addPCFsCrsLbel_2">
               <property name="minimumSize">
                <size>
-                <width>30</width>
+                <width>0</width>
                 <height>0</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>30</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -1566,19 +1634,32 @@
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="ppToolsIPCFsHorizontalCRSsComboBox"/>
+             <widget class="QComboBox" name="ppToolsIPCFsHorizontalCRSsComboBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="ppToolsIPCFsAltitudeLabel">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>68</width>
+                <width>0</width>
                 <height>0</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>40</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -1594,7 +1675,7 @@
              <widget class="QComboBox" name="ppToolsIPCFsVerticalCRSsComboBox">
               <property name="minimumSize">
                <size>
-                <width>90</width>
+                <width>0</width>
                 <height>0</height>
                </size>
               </property>
@@ -1612,13 +1693,13 @@
            <widget class="QPushButton" name="ppToolsSelectIPCFsPushButton">
             <property name="minimumSize">
              <size>
-              <width>50</width>
+              <width>0</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>100</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -1629,15 +1710,21 @@
           </item>
           <item row="1" column="1">
            <widget class="QLineEdit" name="ppToolsNumberOfIPCFsLineEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
-              <width>50</width>
+              <width>0</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>50</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -1678,7 +1765,7 @@
        <item row="1" column="0">
         <widget class="QTabWidget" name="ppToolsTabWidget">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="ppToolsLAStoolsTab">
           <attribute name="title">
@@ -1691,13 +1778,13 @@
               <widget class="QPushButton" name="ppToolsLastoolsPathPushButton">
                <property name="minimumSize">
                 <size>
-                 <width>85</width>
+                 <width>0</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>85</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -1715,9 +1802,15 @@
              </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_8">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
-                 <width>75</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -1727,13 +1820,20 @@
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="QComboBox" name="ppToolsLastoolsCommandComboBox"/>
+              <widget class="QComboBox" name="ppToolsLastoolsCommandComboBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
              </item>
              <item row="1" column="2">
               <widget class="QPushButton" name="ppToolsLastoolsCommandParametersPushButton">
                <property name="maximumSize">
                 <size>
-                 <width>75</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -1755,6 +1855,12 @@
             <layout class="QGridLayout" name="gridLayout_26">
              <item row="0" column="0">
               <widget class="QLabel" name="label_9">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="maximumSize">
                 <size>
                  <width>75</width>
@@ -1767,7 +1873,14 @@
               </widget>
              </item>
              <item row="0" column="1" colspan="2">
-              <widget class="QComboBox" name="ppToolsInternalCommandComboBox"/>
+              <widget class="QComboBox" name="ppToolsInternalCommandComboBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
              </item>
              <item row="1" column="0" colspan="2">
               <spacer name="horizontalSpacer_8">
@@ -1786,7 +1899,7 @@
               <widget class="QPushButton" name="ppToolsInternalCommandParametersPushButton">
                <property name="maximumSize">
                 <size>
-                 <width>75</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -1851,13 +1964,13 @@
              <widget class="QLineEdit" name="ppToolsOPCFsSuffixLineEdit">
               <property name="minimumSize">
                <size>
-                <width>100</width>
+                <width>0</width>
                 <height>0</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>100</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -1890,13 +2003,13 @@
              <widget class="QLineEdit" name="ppToolsOPCFsPrefixLineEdit">
               <property name="minimumSize">
                <size>
-                <width>100</width>
+                <width>0</width>
                 <height>0</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>100</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -1956,13 +2069,13 @@
           <widget class="QPushButton" name="runProcessListPushButton">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>0</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>75</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
